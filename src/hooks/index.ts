@@ -18,9 +18,9 @@ const mapToBookPage = (apiResponse?: SearchResponse): BookPage | undefined => {
   };
 };
 
-export const useBookPage = (index = 1, limit = 15, query = "") => {
+export const useBookPage = (index = 1, limit = 15, query = "", sort = "") => {
   const { data, error, isLoading } = useSWR<SearchResponse>(
-    `https://openlibrary.org/search.json?q=${query}&page=${index}&limit=${limit}`,
+    `https://openlibrary.org/search.json?q=${query}&page=${index}&limit=${limit}&sort=${sort}`,
     fetcher
   );
 

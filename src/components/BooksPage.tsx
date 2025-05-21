@@ -14,17 +14,22 @@ const BOOK_PAGE_LIMIT = 15;
 
 interface BooksPageProps {
   index: number;
+  searchQuery?: string;
+  sort?: string;
   onIndexChange?: (index: number) => void;
 }
 
 export const BooksPage = ({
   index,
+  searchQuery,
+  sort,
   onIndexChange = () => {},
 }: BooksPageProps) => {
   const { page, isLoading, isError } = useBookPage(
     index,
     BOOK_PAGE_LIMIT,
-    "Hollow"
+    searchQuery,
+    sort
   );
 
   if (isLoading) {
@@ -58,9 +63,10 @@ export const BooksPage = ({
         {page?.books.map((book) => (
           <div
             key={book.id}
-            className="shadow-2xl p-4 bg-red-500 text-black text-lg font-bold"
+            className="shadow-2xl p-4 flex flex-col gap-4 bg-red-500 text-black text-lg font-bold"
           >
-            {book.title}
+            <span>{book.title}</span>
+            <span>{book.authors.join(",")}</span>
           </div>
         ))}
       </div>
