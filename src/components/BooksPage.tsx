@@ -60,7 +60,11 @@ export const BooksPage = ({
   if (page.total === 0) {
     return (
       <div className="grid place-items-center">
-        <h2 className="text-3xl font-bold">No books could be found...</h2>
+        <h2 className="text-3xl font-bold">
+          {searchQuery
+            ? `No books could be found...`
+            : `Search for books to get started.`}
+        </h2>
       </div>
     );
   }
@@ -83,15 +87,15 @@ export const BooksPage = ({
   };
 
   return (
-    <div className="flex flex-col gap-8 ">
-      <section className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div className="grid  gap-8">
+      <section className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 self-start">
         <h2 className="sr-only">{`Books found for: ${searchQuery}`}</h2>
         {page?.books.map((book) => (
           <BookCard key={book.id} book={book} />
         ))}
       </section>
-      <Pagination>
-        <PaginationContent>
+      <Pagination className="self-end">
+        <PaginationContent className="bg-white rounded-2xl shadow-card p-2">
           <PaginationItem>
             <PaginationPrevious href="#" onClick={handlePreviousPage} />
           </PaginationItem>

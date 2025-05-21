@@ -1,14 +1,18 @@
 import { useEffect, useState } from "react";
 import { BooksPage } from "./components/BooksPage";
 import { SearchField } from "./components/SearchField";
+import { useLocalStorage } from "@uidotdev/usehooks";
 
 const App = () => {
   const [searchQuery, setSearchQuery] = useState("");
 
-  const [pageIndex, setPageIndex] = useState(1);
-  const [fieldKey, setFieldKey] = useState("all");
-  const [searchTerm, setSearchTerm] = useState("Hollow");
-  const [sort, setSort] = useState("");
+  const [pageIndex, setPageIndex] = useLocalStorage("currentPage", 1);
+  const [fieldKey, setFieldKey] = useLocalStorage("fieldKey", "all");
+  const [searchTerm, setSearchTerm] = useLocalStorage(
+    "searchTerm",
+    "He Who Fights with Monsters"
+  );
+  const [sort, setSort] = useLocalStorage("sort", "");
 
   useEffect(() => {
     if (fieldKey === "all") {

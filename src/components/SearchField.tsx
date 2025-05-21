@@ -41,7 +41,10 @@ export const SearchField = ({
       <h2 className="sr-only">Search for books by title and author</h2>
       <div className="flex flex-1">
         <Select value={fieldKey} onValueChange={onFieldKeyChange}>
-          <SelectTrigger className="w-24 rounded-r-none">
+          <SelectTrigger
+            aria-label="Select field to include in query"
+            className="w-24 rounded-r-none"
+          >
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
@@ -53,13 +56,17 @@ export const SearchField = ({
 
         <Input
           value={internalSearchTerm}
+          aria-label="search books"
           placeholder="Search FindBooks"
           onChange={(e) => setInternalSearchTerm(e.target.value)}
           className="rounded-none"
         />
 
         <Select value={sort} onValueChange={onSortChange}>
-          <SelectTrigger className="w-32 rounded-l-none">
+          <SelectTrigger
+            aria-label="Sort books by"
+            className="w-32 rounded-l-none"
+          >
             <SelectValue placeholder="Sort by" />
           </SelectTrigger>
           <SelectContent>
@@ -72,7 +79,11 @@ export const SearchField = ({
         </Select>
       </div>
       <Popover>
-        <PopoverTrigger asChild className="cursor-pointer">
+        <PopoverTrigger
+          aria-label="About Open Library API"
+          asChild
+          className="cursor-pointer"
+        >
           <Button variant="ghost">
             <RocketIcon />
           </Button>
