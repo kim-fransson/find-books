@@ -20,6 +20,7 @@ const App = () => {
 
   return (
     <div className="min-h-svh flex flex-col">
+      <h1 className="sr-only">Find Books</h1>
       <header className="min-h-36 bg-pattern-mobile lg:bg-pattern-desktop relative">
         <SearchField
           fieldKey={fieldKey}
@@ -30,7 +31,7 @@ const App = () => {
           onSortChange={setSort}
         />
       </header>
-      <main className="mx-auto  max-w-7xl flex-1 w-full px-8 py-16">
+      <main className="mx-auto  max-w-7xl flex-1 w-full grid px-8 py-16">
         <BooksPage
           index={pageIndex}
           searchQuery={searchQuery}

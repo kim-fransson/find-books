@@ -1,3 +1,5 @@
+import { Skeleton } from "./ui/skeleton";
+
 interface BookCardProps {
   book: Book;
 }
@@ -15,6 +17,18 @@ export const BookCard = ({ book }: BookCardProps) => {
         className=" justify-self-end"
         loading="lazy"
       />
+    </div>
+  );
+};
+
+export const BookCardSkeleton = () => {
+  return (
+    <div className="py-4 px-8 border-l-8 border-primary grid grid-cols-[1fr_auto] gap-5 rounded bg-white shadow-card">
+      <div className="flex flex-col min-w-0 gap-2">
+        <Skeleton className="h-16 w-56 rounded" />
+        <Skeleton className="h-6 w-40 rounded" />
+      </div>
+      <Skeleton className="rounded w-10 h-14" />
     </div>
   );
 };

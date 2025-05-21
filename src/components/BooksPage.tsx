@@ -9,7 +9,7 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "./ui/pagination";
-import { BookCard } from "./BookCard";
+import { BookCard, BookCardSkeleton } from "./BookCard";
 
 const BOOK_PAGE_LIMIT = 15;
 
@@ -34,11 +34,35 @@ export const BooksPage = ({
   );
 
   if (isLoading) {
-    return <span>Loading...</span>;
+    return (
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {Array.from({ length: BOOK_PAGE_LIMIT }).map((_, index) => (
+          <BookCardSkeleton key={index} />
+        ))}
+      </div>
+    );
   }
 
   if (isError || !page) {
-    return <span>Error!!!</span>;
+    return (
+      <div className="grid place-items-center">
+        <h2 className="text-3xl font-bold">
+          No! An{" "}
+          <span className="rounded inline-block bg-red-400 text-white p-1 -rotate-3">
+            error
+          </span>{" "}
+          popped up.
+        </h2>
+      </div>
+    );
+  }
+
+  if (page.total === 0) {
+    return (
+      <div className="grid place-items-center">
+        <h2 className="text-3xl font-bold">No books could be found...</h2>
+      </div>
+    );
   }
 
   const totalPages = Math.ceil(page.total / BOOK_PAGE_LIMIT);
@@ -59,12 +83,13 @@ export const BooksPage = ({
   };
 
   return (
-    <div className="flex flex-col gap-8">
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div className="flex flex-col gap-8 ">
+      <section className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <h2 className="sr-only">{`Books found for: ${searchQuery}`}</h2>
         {page?.books.map((book) => (
           <BookCard key={book.id} book={book} />
         ))}
-      </div>
+      </section>
       <Pagination>
         <PaginationContent>
           <PaginationItem>

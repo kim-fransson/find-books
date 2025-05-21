@@ -38,6 +38,7 @@ export const SearchField = ({
 
   return (
     <div className="bg-white flex gap-2 rounded-2xl p-4 absolute w-full max-w-4xl -translate-1/2 left-1/2 bottom-0 shadow-card translate-y-1/2">
+      <h2 className="sr-only">Search for books by title and author</h2>
       <div className="flex flex-1">
         <Select value={fieldKey} onValueChange={onFieldKeyChange}>
           <SelectTrigger className="w-24 rounded-r-none">
@@ -52,6 +53,7 @@ export const SearchField = ({
 
         <Input
           value={internalSearchTerm}
+          placeholder="Search FindBooks"
           onChange={(e) => setInternalSearchTerm(e.target.value)}
           className="rounded-none"
         />
