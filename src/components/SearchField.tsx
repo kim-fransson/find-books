@@ -8,6 +8,9 @@ import {
 import { Input } from "./ui/input";
 import { useDebounce } from "@uidotdev/usehooks";
 import { useEffect, useState } from "react";
+import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
+import { RocketIcon } from "lucide-react";
+import { Button } from "./ui/button";
 
 interface SearchFieldProps {
   fieldKey: string;
@@ -34,8 +37,8 @@ export const SearchField = ({
   }, [debouncedSearchTerm, onSearchTermChange]);
 
   return (
-    <div className="bg-white rounded-2xl p-4 absolute w-full max-w-4xl -translate-1/2 left-1/2 bottom-0 shadow-card translate-y-1/2">
-      <div className="flex">
+    <div className="bg-white flex gap-2 rounded-2xl p-4 absolute w-full max-w-4xl -translate-1/2 left-1/2 bottom-0 shadow-card translate-y-1/2">
+      <div className="flex flex-1">
         <Select value={fieldKey} onValueChange={onFieldKeyChange}>
           <SelectTrigger className="w-24 rounded-r-none">
             <SelectValue />
@@ -66,6 +69,22 @@ export const SearchField = ({
           </SelectContent>
         </Select>
       </div>
+      <Popover>
+        <PopoverTrigger asChild className="cursor-pointer">
+          <Button variant="ghost">
+            <RocketIcon />
+          </Button>
+        </PopoverTrigger>
+        <PopoverContent className="w-max">
+          Powered by{" "}
+          <a href="https://openlibrary.org/developers/api" target="_blank">
+            <span className="uppercase bg-[#518abe] font-bold p-1 rounded -rotate-3 mx-1 inline-block text-white">
+              open
+            </span>{" "}
+            library
+          </a>
+        </PopoverContent>
+      </Popover>
     </div>
   );
 };
