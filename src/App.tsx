@@ -30,7 +30,7 @@ const App = () => {
           onSortChange={setSort}
         />
       </header>
-      <main className="mx-auto  max-w-7xl flex-1 w-full px-8 py-12">
+      <main className="mx-auto  max-w-7xl flex-1 w-full px-8 py-16">
         <BooksPage
           index={pageIndex}
           searchQuery={searchQuery}
@@ -39,7 +39,11 @@ const App = () => {
         />
         {/* Pre-render the next page to improve perceived performance */}
         <div style={{ display: "none" }}>
-          <BooksPage index={pageIndex + 1} />
+          <BooksPage
+            index={pageIndex + 1}
+            searchQuery={searchQuery}
+            sort={sort}
+          />
         </div>
       </main>
       <footer className="mt-auto min-h-36 bg-pattern-mobile lg:bg-pattern-desktop"></footer>

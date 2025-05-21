@@ -34,7 +34,7 @@ export const SearchField = ({
   }, [debouncedSearchTerm, onSearchTermChange]);
 
   return (
-    <div className="bg-white rounded-2xl p-4 absolute w-full max-w-4xl -translate-1/2 left-1/2 bottom-0 shadow-2xl translate-y-1/2">
+    <div className="bg-white rounded-2xl p-4 absolute w-full max-w-4xl -translate-1/2 left-1/2 bottom-0 shadow-card translate-y-1/2">
       <div className="flex">
         <Select value={fieldKey} onValueChange={onFieldKeyChange}>
           <SelectTrigger className="w-24 rounded-r-none">

@@ -9,6 +9,7 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "./ui/pagination";
+import { BookCard } from "./BookCard";
 
 const BOOK_PAGE_LIMIT = 15;
 
@@ -59,15 +60,9 @@ export const BooksPage = ({
 
   return (
     <div className="flex flex-col gap-8">
-      <div className="flex flex-wrap gap-4">
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         {page?.books.map((book) => (
-          <div
-            key={book.id}
-            className="shadow-2xl p-4 flex flex-col gap-4 bg-red-500 text-black text-lg font-bold"
-          >
-            <span>{book.title}</span>
-            <span>{book.authors.join(",")}</span>
-          </div>
+          <BookCard key={book.id} book={book} />
         ))}
       </div>
       <Pagination>
