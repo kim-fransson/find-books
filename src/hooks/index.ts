@@ -13,6 +13,7 @@ const mapToBookPage = (apiResponse?: SearchResponse): BookPage | undefined => {
         id: doc.key,
         authors: doc.author_name ?? [],
         coverId: doc.cover_i,
+        publishedYear: doc.first_publish_year,
       })
     ),
   };

@@ -1,10 +1,13 @@
+import { BookCheck, ExternalLink } from "lucide-react";
+import { Badge } from "./ui/badge";
 import { Skeleton } from "./ui/skeleton";
+import { Button } from "./ui/button";
 
 interface BookCardProps {
   book: Book;
 }
 export const BookCard = ({ book }: BookCardProps) => {
-  const { coverId, title, authors } = book;
+  const { coverId, title, authors, publishedYear } = book;
   return (
     <div className="py-4 px-8 border-l-8 border-primary grid grid-cols-[1fr_auto] gap-5 rounded bg-white shadow-card">
       <div className="flex flex-col min-w-0">
@@ -14,9 +17,25 @@ export const BookCard = ({ book }: BookCardProps) => {
       <img
         src={`https://covers.openlibrary.org/b/id/${coverId}-S.jpg`}
         alt="cover illustration"
-        className=" justify-self-end"
+        className="justify-self-end"
         loading="lazy"
       />
+      <div className="flex justify-between col-span-2 gap-4 self-end">
+        <Badge>
+          <BookCheck />
+          Published: {publishedYear}
+        </Badge>
+
+        <Button variant="link">
+          <a
+            href={`https://openlibrary.org${book.id}`}
+            target="_blank"
+            className="flex gap-2 items-center"
+          >
+            <ExternalLink /> Read more
+          </a>
+        </Button>
+      </div>
     </div>
   );
 };
