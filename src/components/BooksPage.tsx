@@ -87,7 +87,7 @@ export const BooksPage = ({
   };
 
   return (
-    <div className="grid  gap-8">
+    <div className="grid gap-8">
       <section className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 self-start">
         <h2 className="sr-only">{`Books found for: ${searchQuery}`}</h2>
         {page?.books.map((book) => (
@@ -129,4 +129,13 @@ export const BooksPage = ({
       </Pagination>
     </div>
   );
+};
+
+export const PreRenderBookPage = ({
+  index,
+  searchQuery,
+  sort,
+}: BooksPageProps) => {
+  useBookPage(index, BOOK_PAGE_LIMIT, searchQuery, sort);
+  return null;
 };
