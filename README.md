@@ -1,5 +1,9 @@
 # 📚 Find books app made with [shadcn/ui](https://ui.shadcn.com/) and powered by [open library](https://openlibrary.org/developers/api)
 
+Discover your next favorite read!
+
+👉 Preview the app [here](https://find-books-tau.vercel.app/) and start exploring now!
+
 ## 📦 Getting Started
 
 > ⚠️ **Node.js Version Requirement**
